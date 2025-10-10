@@ -6,6 +6,8 @@ import {
   format,
   startOfMinute,
 } from "date-fns";
+import AquaContainer from "./components/AquaContainer/AquaContainer";
+import WavyText from "./components/WavyText/WavyText";
 
 const calcDelayToNextMin = (now: Date): number => {
   const startOfThisMinute = startOfMinute(now);
@@ -18,22 +20,23 @@ const calcDelayToNextMin = (now: Date): number => {
 
 function App() {
   const getCurrentDate = () => new Date();
-  const [currentDate, setCurrentDate] = useState(getCurrentDate());
-
+  const [now, setCurrentDate] = useState(getCurrentDate());
+  const currentDate = format(now, "MM/dd E");
+  const currentTime = format(now, "HH:mm");
   useEffect(() => {
     let timeoutId;
-    let intervalId: number;
+    let intervalId: number | undefined;
 
-    // 分が切り替わった瞬間の処理
     const updateTime = () => {
       setCurrentDate(getCurrentDate());
     };
 
-    const initialDelay = calcDelayToNextMin(currentDate);
+    const initialDelay = calcDelayToNextMin(now);
 
     timeoutId = setTimeout(() => {
       updateTime();
-      intervalId = setInterval(updateTime, 60000);
+      // setIntervalはNode.js環境ではNodeJS.Timerを返す可能性があるためキャスト
+      intervalId = setInterval(updateTime, 60000) as unknown as number;
     }, initialDelay);
 
     return () => {
@@ -41,13 +44,13 @@ function App() {
       clearInterval(intervalId);
     };
   }, []);
-
   return (
     <>
-      <h1>{format(currentDate, "MM/dd")}</h1>
-      <h1>{format(currentDate, "HH:mm")}</h1>
+      <AquaContainer>
+        <WavyText text={currentDate}></WavyText>
+        <WavyText text={currentTime}></WavyText>
+      </AquaContainer>
     </>
   );
 }
-
 export default App;

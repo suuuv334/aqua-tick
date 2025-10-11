@@ -21,14 +21,38 @@ const pathC =
 const pathD =
   "M46.7,-70.4C60.7,-63.6,72.5,-51,77.8,-36.4C83.1,-21.8,81.9,-5.1,75.9,8.2C69.8,21.5,58.8,31.5,48.5,40.3C38.2,49.2,28.6,57,17.3,61.4C6.1,65.8,-6.9,66.7,-21.4,65.7C-35.9,64.7,-51.9,61.8,-63.6,52.7C-75.3,43.6,-82.5,28.2,-84.2,12.5C-85.8,-3.2,-81.8,-19.4,-73.2,-31.5C-64.7,-43.6,-51.6,-51.8,-38.6,-59.1C-25.7,-66.3,-12.8,-72.7,1.7,-75.4C16.3,-78.1,32.6,-77.1,46.7,-70.4Z";
 
-export const pathVariants: Variants = {
-  stateA: { d: pathA },
-  stateB: { d: pathB },
-  stateC: { d: pathC },
-  stateD: { d: pathD },
-};
-
 export const aquaPathAnimationSettings = {
+  variants: {
+    stateA: { d: pathA },
+    stateB: { d: pathB },
+    stateC: { d: pathC },
+    stateD: { d: pathD },
+  } as Variants,
+  initial: "stateA",
+  animate: ["stateA", "stateB", "stateC", "stateD"],
+  transition: {
+    duration: 5,
+    ease: "easeInOut",
+    repeat: Infinity,
+    repeatType: "reverse",
+  } as Transition,
+};
+const maskA =
+  "M 0,700 L 0,262 C 195.5,248 391,234 631,234 C 871,234 1155.5,248 1440,262 L 1440,700 L 0,700 Z";
+const maskB =
+  "M 0,700 L 0,262 C 215.5,304 431,346 671,346 C 911,346 1175.5,304 1440,262 L 1440,700 L 0,700 Z";
+const maskC =
+  "M 0,700 L 0,262 C 303,284 606,306 846,306 C 1086,306 1263,284 1440,262 L 1440,700 L 0,700 Z";
+const maskD =
+  "M 0,700 L 0,262 C 195.5,248 391,234 631,234 C 871,234 1155.5,248 1440,262 L 1440,700 L 0,700 Z";
+
+export const aquaMaskPathAnimeSettings = {
+  variants: {
+    stateA: { d: maskA },
+    stateB: { d: maskB },
+    stateC: { d: maskC },
+    stateD: { d: maskD },
+  } as Variants,
   initial: "stateA",
   animate: ["stateA", "stateB", "stateC", "stateD"],
   transition: {

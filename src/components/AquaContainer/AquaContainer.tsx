@@ -2,47 +2,34 @@
 
 import React from "react";
 import {
-  aquaContainerClass,
-  aquaPathClass,
-  aquaSvgClass,
+  aquaContainer,
+  aquaContent,
+  aquaPath,
+  aquaSvg,
 } from "./AquaContainer.css.ts"; // スタイルをインポート
 import { motion } from "motion/react";
-import {
-  aquaPathAnimationSettings,
-  pathVariants,
-  svgRotationAnim,
-  svgRotationTrans,
-} from "./AquaContainer.anim.ts";
+import { aquaPathAnimationSettings } from "./AquaContainer.anime.ts";
 
 interface AquaContainerProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
-
+// TODO: 引数で色や形をカスタマイズ
+// TODO: SVGは静的文字列になってるがGenerater関数を作成する
 const AquaContainer: React.FC<AquaContainerProps> = ({
   children,
   className,
 }) => {
   const combinedClassName = className
-    ? `${aquaContainerClass} ${className}`
-    : aquaContainerClass;
-
+    ? `${aquaContainer} ${className}`
+    : aquaContainer;
   return (
     <>
       <div className={combinedClassName}>
-        <motion.svg
-          className={aquaSvgClass}
-          viewBox="0 0 200 200"
-          animate={svgRotationAnim}
-          transition={svgRotationTrans}
-        >
-          <motion.path
-            className={aquaPathClass}
-            variants={pathVariants}
-            {...aquaPathAnimationSettings}
-          />
+        <motion.svg className={aquaSvg} viewBox="0 0 200 200">
+          <motion.path className={aquaPath} {...aquaPathAnimationSettings} />
         </motion.svg>
-        <div>{children}</div>
+        <div className={aquaContent}>{children}</div>
       </div>
     </>
   );

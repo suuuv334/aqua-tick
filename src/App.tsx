@@ -5,10 +5,9 @@ import {
   format,
   startOfMinute,
 } from "date-fns";
-import AquaContainer from "./components/AquaContainer/AquaContainer";
-import WavyText from "./components/WavyText/WavyText";
+import AquaTick from "./components/AquaContainer/AquaTick";
 
-const calcDelayToNextMin = (now: Date): number => {
+const calcDelayToNextMinute = (now: Date): number => {
   const startOfThisMinute = startOfMinute(now);
   const nextMinuteStart = addMinutes(startOfThisMinute, 1);
 
@@ -20,8 +19,9 @@ const calcDelayToNextMin = (now: Date): number => {
 function App() {
   const getCurrentDate = () => new Date();
   const [now, setCurrentDate] = useState(getCurrentDate());
-  const currentDate = format(now, "MM/dd E");
+  const currentDate = format(now, "MM/dd");
   const currentTime = format(now, "HH:mm");
+  const currentDay = format(now, "E");
   useEffect(() => {
     let timeoutId;
     let intervalId: number | undefined;
@@ -30,12 +30,11 @@ function App() {
       setCurrentDate(getCurrentDate());
     };
 
-    const initialDelay = calcDelayToNextMin(now);
+    const initialDelay = calcDelayToNextMinute(now);
 
     timeoutId = setTimeout(() => {
       updateTime();
-      // setIntervalはNode.js環境ではNodeJS.Timerを返す可能性があるためキャスト
-      intervalId = setInterval(updateTime, 60000) as unknown as number;
+      intervalId = setInterval(updateTime, 60000);
     }, initialDelay);
 
     return () => {
@@ -45,10 +44,47 @@ function App() {
   }, []);
   return (
     <>
-      <AquaContainer>
-        <WavyText text={currentDate}></WavyText>
-        <WavyText text={currentTime}></WavyText>
-      </AquaContainer>
+      <AquaTick>
+        <div
+          style={{
+            width: "fit-content",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <h3
+              style={{
+                margin: 0,
+                fontSize: "4em",
+                whiteSpace: "nowrap",
+                color: "#636363",
+              }}
+            >
+              {currentDate}
+            </h3>
+            <h3
+              style={{
+                margin: 0,
+                fontSize: "4em",
+                whiteSpace: "nowrap",
+                color: "#636363",
+              }}
+            >
+              {currentDay}
+            </h3>
+          </div>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: "8em",
+              whiteSpace: "nowrap",
+              color: "#636363",
+            }}
+          >
+            <hr color="#636363" style={{ margin: 0 }} />
+            {currentTime}
+          </h2>
+        </div>
+      </AquaTick>
     </>
   );
 }

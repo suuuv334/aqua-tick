@@ -5,7 +5,7 @@ import {
   format,
   startOfMinute,
 } from "date-fns";
-import AquaTick from "./components/AquaContainer/AquaTick";
+import AquaTick from "./components/AquaTick/AquaTick";
 
 const calcDelayToNextMinute = (now: Date): number => {
   const startOfThisMinute = startOfMinute(now);
@@ -18,10 +18,13 @@ const calcDelayToNextMinute = (now: Date): number => {
 
 function App() {
   const getCurrentDate = () => new Date();
+
   const [now, setCurrentDate] = useState(getCurrentDate());
   const currentDate = format(now, "MM/dd");
   const currentTime = format(now, "HH:mm");
   const currentDay = format(now, "E");
+  const initialDelay = calcDelayToNextMinute(now);
+
   useEffect(() => {
     let timeoutId;
     let intervalId: number | undefined;
@@ -29,8 +32,6 @@ function App() {
     const updateTime = () => {
       setCurrentDate(getCurrentDate());
     };
-
-    const initialDelay = calcDelayToNextMinute(now);
 
     timeoutId = setTimeout(() => {
       updateTime();
@@ -42,9 +43,10 @@ function App() {
       clearInterval(intervalId);
     };
   }, []);
+
   return (
     <>
-      <AquaTick>
+      <AquaTick startOffset={60 - initialDelay / 1000}>
         <div
           style={{
             width: "fit-content",

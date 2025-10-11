@@ -37,28 +37,3 @@ export const aquaPathAnimationSettings = {
     repeatType: "reverse",
   } as Transition,
 };
-const maskA =
-  "M 0,700 L 0,262 C 195.5,248 391,234 631,234 C 871,234 1155.5,248 1440,262 L 1440,700 L 0,700 Z";
-const maskB =
-  "M 0,700 L 0,262 C 215.5,304 431,346 671,346 C 911,346 1175.5,304 1440,262 L 1440,700 L 0,700 Z";
-const maskC =
-  "M 0,700 L 0,262 C 303,284 606,306 846,306 C 1086,306 1263,284 1440,262 L 1440,700 L 0,700 Z";
-const maskD =
-  "M 0,700 L 0,262 C 195.5,248 391,234 631,234 C 871,234 1155.5,248 1440,262 L 1440,700 L 0,700 Z";
-
-export const aquaMaskPathAnimeSettings = {
-  variants: {
-    stateA: { d: maskA },
-    stateB: { d: maskB },
-    stateC: { d: maskC },
-    stateD: { d: maskD },
-  } as Variants,
-  initial: "stateA",
-  animate: ["stateA", "stateB", "stateC", "stateD"],
-  transition: {
-    duration: 5,
-    ease: "easeInOut",
-    repeat: Infinity,
-    repeatType: "reverse",
-  } as Transition,
-};

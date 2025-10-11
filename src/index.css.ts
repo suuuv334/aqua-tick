@@ -4,7 +4,7 @@ globalStyle("body", {
   margin: 0,
   display: "flex",
   placeItems: "center",
-  minWidth: "100wh",
+  minWidth: "100vw",
   minHeight: "100vh",
 });
 

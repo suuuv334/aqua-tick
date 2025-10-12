@@ -50,7 +50,7 @@ function App() {
         <div
           style={{
             color: "#636363",
-            textShadow: "0 0 4px white",
+            textShadow: "0 0 1px white",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>

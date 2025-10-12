@@ -5,8 +5,8 @@ export const svgRotationAnim: Target = {
   rotate: 360,
 };
 export const svgRotationTrans: Transition = {
-  duration: 60,
-  ease: "easeIn",
+  duration: 180,
+  ease: "linear",
   repeat: Infinity,
   repeatType: "loop",
 };

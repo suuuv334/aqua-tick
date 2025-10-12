@@ -49,7 +49,8 @@ function App() {
       <AquaTick startOffset={60 - initialDelay / 1000}>
         <div
           style={{
-            width: "fit-content",
+            color: "#636363",
+            textShadow: "0 0 4px white",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -58,7 +59,6 @@ function App() {
                 margin: 0,
                 fontSize: "4em",
                 whiteSpace: "nowrap",
-                color: "#636363",
               }}
             >
               {currentDate}
@@ -68,7 +68,6 @@ function App() {
                 margin: 0,
                 fontSize: "4em",
                 whiteSpace: "nowrap",
-                color: "#636363",
               }}
             >
               {currentDay}
@@ -79,7 +78,6 @@ function App() {
               margin: 0,
               fontSize: "8em",
               whiteSpace: "nowrap",
-              color: "#636363",
             }}
           >
             <hr color="#636363" style={{ margin: 0 }} />

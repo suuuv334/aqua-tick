@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "generate:notice": "license-report --output=markdown > NOTICE.md",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -14,6 +15,7 @@
     "@vanilla-extract/dynamic": "^2.1.5",
     "@vanilla-extract/recipes": "^0.5.7",
     "date-fns": "^4.1.0",
+    "license-report": "^6.8.0",
     "motion": "^12.23.22",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

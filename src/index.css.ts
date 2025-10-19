@@ -18,6 +18,7 @@ globalStyle("body", {
   minWidth: "100vw",
   minHeight: "100vh",
   textShadow: "0 0 1px white",
+  userSelect: "none",
 });
 
 globalStyle("#root", {

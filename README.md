@@ -20,7 +20,11 @@
 - テキストの色は`「?text_color=<カラーコード(16進数)>」`で変更できます。
   - 例：https://suuuv334.github.io/aqua-tick/?text_color=f0f0f0
 - 両方変更したい場合は間に&を挟んで指定します
-  - 例：http://suuuv334.github.io/aqua-tick/?color=FF0066&text_color=f0f0f0
+  - 例：http://suuuv334.github.io/aqua-tick/?color=b9a2d8&text_color=f0f0f0
+
+- 水の影の色は`「?shadow=<カラーコード(16進数)>」`で変更できます。何も指定しなければ自動で計算しますが、暗くなりすぎたり、目当ての色にしたい場合にご使用ください。
+  - ※`color`とセットで指定しないと適用されません。
+  - 例：http://localhost:5173/aqua-tick/?color=FF0066&shadow=0000ff
 
 ## 利用規約
 

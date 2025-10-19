@@ -71,8 +71,19 @@ export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
     }
 
     // baseColor を使って影の色を計算
-    const shadow = darken(0.1, desaturate(0.3, baseColor));
-    const deep = darken(0.4, desaturate(0.6, baseColor));
+    let shadow = darken(0.1, desaturate(0.2, baseColor));
+    // shadowは自動計算するが指定されている場合はそちらを使用
+    const shadowParam = params.get("shadow");
+
+    if (shadowParam && isValidHexColorCode(shadowParam)) {
+      const cleanColorCode = shadowParam.startsWith("#")
+        ? shadowParam.substring(1)
+        : shadowParam;
+      shadow = `#${cleanColorCode}`;
+      console.log(shadow);
+    }
+    console.log(shadow);
+    const deep = darken(0.1, desaturate(0.2, shadow));
 
     setColors({
       base: baseColor,
@@ -86,12 +97,12 @@ export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
     // text_color の検証を追加
     if (textColorParam && isValidHexColorCode(textColorParam)) {
       // colorParamから先頭の#を安全に取り除く
-      const cleanTextCode = textColor.startsWith("#")
+      const cleanColorCode = textColor.startsWith("#")
         ? textColor.substring(1)
         : colorParam;
 
       // 検証済みのクリーンなコードに # を付けて使用
-      textColor = `#${cleanTextCode}`;
+      textColor = `#${cleanColorCode}`;
     }
 
     setTextColor(textColor);

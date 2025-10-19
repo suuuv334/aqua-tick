@@ -12,25 +12,24 @@ import {
 import { motion } from "motion/react";
 import {
   aquaPathAnimationSettings,
-  secondHandAnimationSettings,
+  getSecondHandAnimation,
   svgRotationAnim,
   svgRotationTrans,
 } from "./AquaTick.anime.ts";
+import { globalTheme } from "../../index.css.ts";
 
 interface AquaTickProps {
   children: React.ReactNode;
   className?: string;
   startOffset?: number;
 }
-// TODO: 引数で色や形をカスタマイズ
-// TODO: SVGは静的文字列になってるがGenerater関数を作成する
 const AquaTick: React.FC<AquaTickProps> = ({
   children,
   className,
   startOffset = 0,
 }) => {
-  console.log(startOffset);
   const combinedClassName = className ? `${aquaTick} ${className}` : aquaTick;
+  const secondhandAmimationSettings = getSecondHandAnimation(startOffset);
   return (
     <>
       <div className={combinedClassName}>
@@ -43,8 +42,16 @@ const AquaTick: React.FC<AquaTickProps> = ({
               />
               <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="5%" stopColor="#9e8cb6ff"></stop>
-                  <stop offset="95%" stopColor="#423750ff"></stop>
+                  <stop
+                    className="gradStart"
+                    stopColor={globalTheme.color.shadow}
+                    offset="5%"
+                  ></stop>
+                  <stop
+                    className="gradEnd"
+                    stopColor={globalTheme.color.deep}
+                    offset="95%"
+                  ></stop>
                 </linearGradient>
                 <mask id="wave-mask">
                   <motion.g
@@ -62,7 +69,7 @@ const AquaTick: React.FC<AquaTickProps> = ({
           </motion.g>
 
           <g mask="url(#wave-mask)">
-            <motion.g {...secondHandAnimationSettings}>
+            <motion.g {...secondhandAmimationSettings}>
               <motion.path
                 className={secondHand}
                 {...aquaPathAnimationSettings}

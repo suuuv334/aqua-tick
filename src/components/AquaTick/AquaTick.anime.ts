@@ -38,14 +38,17 @@ export const aquaPathAnimationSettings = {
   } as Transition,
 };
 
-export const secondHandAnimationSettings = {
-  animate: {
-    y: [170, 20],
-  },
-  transition: {
-    duration: 60,
-    ease: "linear",
-    repeatType: "loop",
-    repeat: Infinity,
-  } as Transition,
+export const getSecondHandAnimation = (startOffset: number) => {
+  return {
+    animate: {
+      y: [170, 20],
+    },
+    transition: {
+      delay: -startOffset,
+      duration: 60,
+      ease: "linear",
+      repeatType: "loop",
+      repeat: Infinity,
+    } as Transition,
+  };
 };

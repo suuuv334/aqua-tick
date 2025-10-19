@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { globalTheme } from "../../index.css";
 export const aquaTickContent = style({
   position: "relative",
   // SVGの z-index: 1 よりも高く設定
@@ -23,7 +24,7 @@ export const aquaTickSvg = style({
 
 export const aquaTickPath = style({
   transform: "translate(100px, 100px)",
-  fill: "#b9a2d8ff",
+  fill: globalTheme.color.base,
   strokeWidth: "2px",
 });
 

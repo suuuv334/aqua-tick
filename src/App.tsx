@@ -97,9 +97,9 @@ export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
     // text_color の検証を追加
     if (textColorParam && isValidHexColorCode(textColorParam)) {
       // colorParamから先頭の#を安全に取り除く
-      const cleanColorCode = textColor.startsWith("#")
-        ? textColor.substring(1)
-        : colorParam;
+      const cleanColorCode = textColorParam.startsWith("#")
+        ? textColorParam.substring(1)
+        : textColorParam;
 
       // 検証済みのクリーンなコードに # を付けて使用
       textColor = `#${cleanColorCode}`;

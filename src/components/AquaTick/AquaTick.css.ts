@@ -31,3 +31,7 @@ export const aquaTickMask = style({
   transform: "translate(100px, 100px)",
   fill: "white",
 });
+export const secondHand = style({
+  transform: "translate(100px, 100px) scale(1.5) ",
+  fill: "url(#gradient)",
+});

@@ -7,10 +7,12 @@ import {
   aquaTickMask,
   aquaTickPath,
   aquaTickSvg,
+  secondHand,
 } from "../AquaTick/AquaTick.css.ts"; // スタイルをインポート
 import { motion } from "motion/react";
 import {
   aquaPathAnimationSettings,
+  secondHandAnimationSettings,
   svgRotationAnim,
   svgRotationTrans,
 } from "./AquaTick.anime.ts";
@@ -60,23 +62,9 @@ const AquaTick: React.FC<AquaTickProps> = ({
           </motion.g>
 
           <g mask="url(#wave-mask)">
-            <motion.g
-              animate={{
-                y: [170, 20],
-              }}
-              transition={{
-                delay: -startOffset,
-                duration: 60,
-                ease: "linear",
-                repeatType: "loop",
-                repeat: Infinity,
-              }}
-            >
+            <motion.g {...secondHandAnimationSettings}>
               <motion.path
-                style={{
-                  transform: "translate(100px, 100px) scale(1.5) ",
-                  fill: "url(#gradient)",
-                }}
+                className={secondHand}
                 {...aquaPathAnimationSettings}
               />
             </motion.g>

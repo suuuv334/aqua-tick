@@ -47,43 +47,12 @@ function App() {
   return (
     <>
       <AquaTick startOffset={60 - initialDelay / 1000}>
-        <div
-          style={{
-            color: "#636363",
-            textShadow: "0 0 1px white",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <h3
-              style={{
-                margin: 0,
-                fontSize: "4em",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {currentDate}
-            </h3>
-            <h3
-              style={{
-                margin: 0,
-                fontSize: "4em",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {currentDay}
-            </h3>
-          </div>
-          <h2
-            style={{
-              margin: 0,
-              fontSize: "8em",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <hr color="#636363" style={{ margin: 0 }} />
-            {currentTime}
-          </h2>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <h3>{currentDate}</h3>
+          <h3>{currentDay}</h3>
         </div>
+        <hr />
+        <h2>{currentTime}</h2>
       </AquaTick>
     </>
   );

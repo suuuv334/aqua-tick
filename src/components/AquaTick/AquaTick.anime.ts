@@ -37,3 +37,15 @@ export const aquaPathAnimationSettings = {
     repeatType: "reverse",
   } as Transition,
 };
+
+export const secondHandAnimationSettings = {
+  animate: {
+    y: [170, 20],
+  },
+  transition: {
+    duration: 60,
+    ease: "linear",
+    repeatType: "loop",
+    repeat: Infinity,
+  } as Transition,
+};

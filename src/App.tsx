@@ -18,47 +18,93 @@ const calcDelayToNextMinute = (now: Date): number => {
 
   return delay;
 };
+/**
+ * 与えられた文字列が有効な16進数カラーコード（3桁または6桁）であるかを検証します。
+ * # の有無はチェックしません（引数の文字列から # を取り除いて検証することを想定）。
+ * * @param {string} code 検証するカラーコード文字列
+ * @returns {boolean} 有効なカラーコードであれば true
+ */
+function isValidHexColorCode(code: string) {
+  // # を取り除く（ユーザーが # を含めて入力した場合に対応するため）
+  const cleanCode = code.startsWith("#") ? code.substring(1) : code;
 
+  // 以下の正規表現で検証:
+  // ^      - 文字列の先頭
+  // [0-9A-Fa-f] - 0から9までの数字、またはAからF（大小文字を区別しない）のアルファベット
+  // {3}    - 3文字に完全に一致
+  // |      - または
+  // [0-9A-Fa-f] - 0から9までの数字、またはAからF（大小文字を区別しない）のアルファベット
+  // {6}    - 6文字に完全に一致
+  // $      - 文字列の末尾
+  const regex = /^([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
+
+  return regex.test(cleanCode);
+}
 // クエリがある場合に色を変える
 export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const DEFAULT_BASE_COLOR = "#BAE6FF"; // デフォルトの基本色（#RRGGBB形式）
+  const DEFAULT_TEXT_COLOR = "#636363"; // デフォルトのテキスト色
+
   const [colors, setColors] = useState<{
     base: string;
     shadow: string;
     deep: string;
   }>();
   const [textColorState, setTextColor] = useState<string>();
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+
     const colorParam = params.get("color");
-    const base = `#${colorParam || "BAE6FF"}`;
-    console.log(base);
-    const shadow = darken(0.1, desaturate(0.3, base));
-    const deep = darken(0.4, desaturate(0.6, base));
-    console.log(shadow);
-    console.log(deep);
+    let baseColor = DEFAULT_BASE_COLOR;
+
+    if (colorParam && isValidHexColorCode(colorParam)) {
+      // colorParamから先頭の#を安全に取り除く
+      const cleanColorCode = colorParam.startsWith("#")
+        ? colorParam.substring(1)
+        : colorParam;
+
+      // 検証済みのクリーンなコードに # を付けて使用
+      baseColor = `#${cleanColorCode}`;
+    }
+
+    // baseColor を使って影の色を計算
+    const shadow = darken(0.1, desaturate(0.3, baseColor));
+    const deep = darken(0.4, desaturate(0.6, baseColor));
+
     setColors({
-      base: base,
+      base: baseColor,
       shadow: shadow,
       deep: deep,
     });
 
     const textColorParam = params.get("text_color");
-    setTextColor(`#${textColorParam || "636363"}`);
+    let textColor = DEFAULT_TEXT_COLOR; // 初期値としてデフォルトを設定
+
+    // text_color の検証を追加
+    if (textColorParam && isValidHexColorCode(textColorParam)) {
+      // colorParamから先頭の#を安全に取り除く
+      const cleanTextCode = textColor.startsWith("#")
+        ? textColor.substring(1)
+        : colorParam;
+
+      // 検証済みのクリーンなコードに # を付けて使用
+      textColor = `#${cleanTextCode}`;
+    }
+
+    setTextColor(textColor);
   }, []);
-  return (
-    <div
-      style={assignInlineVars({
-        [globalTheme.color.base]: colors?.base,
-        [globalTheme.color.shadow]: colors?.shadow,
-        [globalTheme.color.deep]: colors?.deep,
-        [globalTheme.font.color]: textColorState,
-      })}
-    >
-      {children}
-    </div>
-  );
+
+  const assign = assignInlineVars({
+    [globalTheme.color.base]: colors?.base,
+    [globalTheme.color.shadow]: colors?.shadow,
+    [globalTheme.color.deep]: colors?.deep,
+    [globalTheme.font.color]: textColorState,
+  });
+
+  return <div style={assign}>{children}</div>;
 };
 function App() {
   const getCurrentDate = () => new Date();

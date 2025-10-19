@@ -4,7 +4,7 @@ import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/aqua-tick/",
   plugins: [
     react(),
     vanillaExtractPlugin({ identifiers: ({ hash }) => `prefix_${hash}` }),

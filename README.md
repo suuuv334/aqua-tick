@@ -1,6 +1,6 @@
 # Aqua Tick
 
-デモサイト:https://suuuv334.github.io/aqua-tick/
+デモURL:https://suuuv334.github.io/aqua-tick/
 
 揺れ動く水をイメージした時計です。
 

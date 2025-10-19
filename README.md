@@ -17,7 +17,7 @@
 
 - URLの末尾に`「?color=<カラーコード(16進数)>」`を追加することで時計の色を変更できます。
   - 例：https://suuuv334.github.io/aqua-tick/?color=b9a2d8
-- テキストの色は`「?text_color=<カラーコード>」`で変更できます。
+- テキストの色は`「?text_color=<カラーコード(16進数)>」`で変更できます。
   - 例：https://suuuv334.github.io/aqua-tick/?text_color=f0f0f0
 - 両方変更したい場合は間に&を挟んで指定します
   - 例：http://suuuv334.github.io/aqua-tick/?color=FF0066&text_color=f0f0f0
@@ -32,3 +32,9 @@
 ## LICENSE
 
 see the [LICENSE](LICENSE) file
+
+#### 連絡先
+
+バグ報告や機能要望、その他の連絡も以下のアカウントに気軽にDMしてください
+
+https://x.com/sumber_suv

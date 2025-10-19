@@ -1,6 +1,6 @@
 # Aqua Tick
 
-URL:https://suuuv334.github.io/aqua-tick/
+デモサイト:https://suuuv334.github.io/aqua-tick/
 
 揺れ動く水をイメージした時計です。
 
@@ -9,7 +9,7 @@ URL:https://suuuv334.github.io/aqua-tick/
 ### 使い方
 
 1. 「ソースを追加」→「ブラウザ」を選択
-2. URL に「https://suuuv334.github.io/aqua-tick/」を入力
+2. URL に[https://suuuv334.github.io/aqua-tick/](https://suuuv334.github.io/aqua-tick/)を入力
 3. 幅を **600px**、高さを **600px** に設定
 4. 「OK」を押すと時計が表示されます
 
@@ -18,9 +18,9 @@ URL:https://suuuv334.github.io/aqua-tick/
 - URLの末尾に`「?color=<カラーコード(16進数)>」`を追加することで時計の色を変更できます。
   - 例：https://suuuv334.github.io/aqua-tick/?color=b9a2d8
 - テキストの色は`「?text_color=<カラーコード>」`で変更できます。
-  - 例：https://suuuv334.github.io/aqua-tick/?text_color=b9a2d8
+  - 例：https://suuuv334.github.io/aqua-tick/?text_color=f0f0f0
 - 両方変更したい場合は間に&を挟んで指定します
-  - 例：http://localhost:5173/aqua-tick/?color=FF0066&text_color=f0f0f0
+  - 例：http://suuuv334.github.io/aqua-tick/?color=FF0066&text_color=f0f0f0
 
 ## 利用規約
 

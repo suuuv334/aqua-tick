@@ -19,6 +19,9 @@ globalStyle("body", {
   minHeight: "100vh",
   textShadow: "0 0 1px white",
   userSelect: "none",
+  WebkitUserSelect: "none",
+  msUserSelect: "none",
+  MozUserSelect: "none",
 });
 
 globalStyle("#root", {

@@ -1,0 +1,5 @@
+npx lint-staged
+if git diff --cached --name-only | grep -E 'package(-lock)?\.json' >/dev/null; then
+  npm run generate:notice
+  git add NOTICE.md
+fi

@@ -42,4 +42,4 @@ see the [LICENSE](LICENSE) file
 
 バグ報告や機能要望、その他の連絡も以下のアカウントに気軽にDMしてください
 
-https://x.com/sumber_suv
+https://x.com/BerSuv62153

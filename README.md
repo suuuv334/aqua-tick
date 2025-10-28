@@ -8,10 +8,11 @@
 
 ### 使い方
 
+OBSの場合
+
 1. 「ソースを追加」→「ブラウザ」を選択
 2. URL に[https://suuuv334.github.io/aqua-tick/](https://suuuv334.github.io/aqua-tick/)を入力
 3. 幅を **600px**、高さを **600px** に設定
-4. 「OK」を押すと時計が表示されます
 
 ### 色の変更
 
@@ -41,4 +42,4 @@ see the [LICENSE](LICENSE) file
 
 バグ報告や機能要望、その他の連絡も以下のアカウントに気軽にDMしてください
 
-https://x.com/sumber_suv
+https://x.com/BerSuv62153

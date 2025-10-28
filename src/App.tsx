@@ -69,7 +69,7 @@ export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
       baseColor = `#${cleanColorCode}`;
     }
     // baseColor を使って影の色を計算
-    let shadow = darken(0.1, desaturate(0.2, baseColor));
+    let shadow = darken(0.1, desaturate(0.1, baseColor));
     // shadowは自動計算するが指定されている場合はそちらを使用
     const shadowParam = params.get("shadow");
 
@@ -79,7 +79,7 @@ export const ColorBase: React.FC<{ children: React.ReactNode }> = ({
         : shadowParam;
       shadow = `#${cleanColorCode}`;
     }
-    const deep = darken(0.1, desaturate(0.2, shadow));
+    const deep = darken(0.1, desaturate(0.1, shadow));
 
     setColors({
       base: baseColor,
